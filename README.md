@@ -1,5 +1,6 @@
 # Trace workshop: Evals for PMs
 
+![Eval heatmap](assets/heatmap.png)
 ## Why evals matter for PMs
 
 As a PM, you're responsible for deciding when an AI feature is ready to ship. But "it seems good" or "engineering told me it was ready" isn't a defensible answer when leadership asks how you know.
@@ -26,6 +27,8 @@ You'll run multiple experiments with different chatbot personalities:
 - Refund-resistant: tries to offer alternatives before approving refunds
 
 Then you'll compare all experiments to decide which (if any) is ready to ship.
+
+![Experiment analysis comparing chatbot personalities](assets/experiment-analysis.png)
 
 ---
 
