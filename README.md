@@ -39,13 +39,13 @@ Then you'll compare all experiments to decide which (if any) is ready to ship.
 3. Go to Datasets tab
 4. Upload `dataset.csv` from this repo
 5. Go to Playgrounds tab and create a new playground
-5. Paste in your system prompt from `prompts/polite.txt` in this repo
+5. Paste in your system prompt from `prompt_polite.txt` in this repo
 6. Choose your model
-7. Click on +Scorer > Create custom scorer > paste in the criteria from `scorer_criteria.txt`
+7. Click on +Scorer > Create custom scorer > paste in the criteria from `scorer_brand_alignment.txt`
 8. Press Run in the top right corner
 9. Click +Experiment and name it "Polite Customer Support"
 
-Repeat steps 5-9 for each personality variant (concise, refund-resistant) you want to test.
+Repeat steps 5-9 for each personality variant (`prompt_concise.txt`, `prompt_refund_resistant.txt`) you want to test.
 
 ![Braintrust Playground showing customer support eval](assets/playground.png)
 
@@ -61,6 +61,8 @@ Repeat steps 5-9 for each personality variant (concise, refund-resistant) you wa
 
 ## Discussion: Would you ship this?
 
+![Vibe check comic](assets/vibe-comic.png)
+
 There's no universal threshold, but we suggest setting a specific benchmark (like 95% on BrandAlignment) as a reasonable bar for being ready to ship to production. If your top personality is hitting 90%+ CONSISTENTLY with no major category failures, you're likely ready to ship. If scores are in the 70-80% range, identify the failure patterns and iterate on your prompt.
 
 For example, if the "polite" support personality consistently fails on proactively suggesting next steps, try adding that behavior explicitly to the prompt and re-running the eval. Keep tweaking and iterating until you can close the gap in your eval scores.
@@ -69,4 +71,4 @@ For example, if the "polite" support personality consistently fails on proactive
 
 ## Questions?
 
-Find Jess or Eric during the workshop!
+Reach out to [Jess](https://www.linkedin.com/in/jessica-wang-a1aa15ba/) or [Eric](https://www.linkedin.com/in/erictliu/)!
