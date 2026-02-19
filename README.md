@@ -1,91 +1,68 @@
-# TRACE Workshop: Evals for PMs
+# trace workshop: evals for PMs
 
-Run your first AI evaluation in 15 minutes.
+## Why evals matter for PMs
+
+As a PM, you're responsible for deciding when an AI feature is ready to ship. But "it seems good" isn't a defensible answer when leadership asks how you know.
+
+Evals give you a structured way to answer: Are the responses meeting our brand guidelines and requirements? They turn subjective judgment into measurable criteria you can track across experiments.
+
+This workshop walks through building evals in the Braintrust UI. If you prefer working in code, you can do everything here using the [Braintrust SDK](https://www.braintrust.dev/docs/reference/sdk).
+
+---
 
 ## Scenario
 
-You're a PM at **Sunshine Co.**, an e-commerce company. Your team just built an AI chatbot to handle customer support. Before you ship it, you need to answer: **Is it good enough?**
+You're a PM at Sunshine, an e-commerce company. Your support team is drowning in customer complaints about orders—refunds, shipping delays, damaged items. Historically, humans have handled these tickets, but your team wants to move to AI to scale support.
 
-You'll run two experiments:
-1. **Baseline:** GPT-4o with no guidance
-2. **Improved:** GPT-4o with brand-aligned instructions
+Before you ship, you need to answer: Is it good enough? Are the responses meeting our brand guidelines?
 
-Then you'll compare them and decide: **Would you ship this?**
+You'll run multiple experiments with different chatbot personalities:
+- Concise: short, direct responses
+- Polite: warm and empathetic tone
+- Refund-resistant: tries to offer alternatives before approving refunds
 
----
-
-## Setup (3 min)
-
-### 1. Clone this repo
-```bash
-git clone https://github.com/braintrustdata/trace-workshop.git
-cd trace-workshop
-```
-
-### 2. Install dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Set your API key
-```bash
-export BRAINTRUST_API_KEY="your-api-key-here"
-```
-
-> **Note:** We'll provide API keys during the workshop.
+Then you'll compare all experiments to decide which (if any) is ready to ship.
 
 ---
 
-## Run the Experiments (10 min)
+## Setup (in the Braintrust UI)
 
-### Step 1: Run the baseline (no system prompt)
-```bash
-python eval_baseline.py
-```
+1. Go to [braintrust.dev](https://www.braintrust.dev) and sign in
+2. Create a new project (e.g., "Sunshine Support Eval")
+3. Go to Playground
+4. Upload or paste in your dataset (use `dataset.csv` from this repo)
+5. Paste in your system prompt
+6. Choose your model
+7. Run the experiment
+8. Add your scorer criteria
+9. Save the experiment
 
-This runs GPT-4o with no instructions on 16 customer complaints.
-
-### Step 2: Run the improved version (brand-aligned)
-```bash
-python eval_improved.py
-```
-
-This runs the same test cases with a brand-aligned system prompt.
-
-### Step 3: Compare in Braintrust
-
-1. Go to [braintrust.dev](https://www.braintrust.dev)
-2. Open the **TRACE_Workshop** project
-3. Click **Experiments**
-4. Select both experiments to compare side-by-side
+Repeat steps 5-9 for each personality variant you want to test.
 
 ---
 
-## What to Look For
+## What to look for
 
-- **BrandAlignment score:** Did responses follow our guidelines?
-- **Regressions:** Did any test cases get worse?
-- **Individual failures:** Click into low-scoring rows to see why
+- BrandAlignment score: Did responses follow our guidelines?
+- Regressions: Did any test cases get worse between experiments?
+- Individual failures: Click into low-scoring rows to see why
 
 ---
 
-## Discussion: Would You Ship This?
+## Discussion: Would you ship this?
 
 Look at the results and vote:
-- ✅ **Ship it** — scores are good enough
-- ⚠️ **Needs work** — some categories are failing
-- ❌ **Don't ship** — too many regressions
+- Ship it — scores are good enough
+- Needs work — some categories are failing
+- Don't ship — too many regressions
 
 ---
 
-## Files in This Repo
+## Files in this repo
 
-| File | Purpose |
-|------|---------|
-| `dataset.py` | 16 customer complaints (various categories) |
-| `scorer.py` | BrandAlignment LLM-as-judge scorer |
-| `eval_baseline.py` | Experiment 1: No system prompt |
-| `eval_improved.py` | Experiment 2: Brand-aligned prompt |
+- `dataset.csv` — 16 customer complaints across various categories. Upload this to Braintrust.
+- `prompts/` — System prompts for each personality variant. Copy-paste these into the Playground.
+- `scorer_criteria.txt` — The scoring rubric for BrandAlignment. Copy-paste into your scorer config.
 
 ---
 
