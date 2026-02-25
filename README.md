@@ -42,10 +42,11 @@ Then you'll compare all experiments to decide which (if any) is ready to ship.
 5. Paste in your system prompt from `prompt_polite.txt` in this repo
 6. Choose your model
 7. Click on +Scorer > Create custom scorer > paste in the criteria from `scorer_brand_alignment.txt`
-8. Press Run in the top right corner
-9. Click +Experiment and name it "Polite Customer Support"
+8. Under Choice Scores, map N to score 0, and Y to score 1, and press save
+9. Press Run in the top right corner
+10. Click +Experiment and name it "Polite Customer Support"
 
-Repeat steps 5-9 for each personality variant (`prompt_concise.txt`, `prompt_refund_resistant.txt`) you want to test.
+Repeat steps 5-10 for each personality variant (`prompt_concise.txt`, `prompt_refund_resistant.txt`) you want to test.
 
 ![Braintrust Playground showing customer support eval](assets/playground.png)
 
